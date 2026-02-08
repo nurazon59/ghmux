@@ -1,0 +1,24 @@
+defaults:
+  profile: personal
+
+profiles:
+  work:
+    gh_user: work-login
+    git:
+      name: Work Name
+      email: work@example.com
+
+  personal:
+    gh_user: personal-login
+    git:
+      name: Personal Name
+      email: personal@example.com
+
+rules:
+  - hostname: github.com
+    org: work-org
+    profile: work
+
+  - hostname: github.com
+    org: another-work-org
+    profile: work
