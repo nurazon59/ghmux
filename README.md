@@ -52,13 +52,6 @@ ghmux sync
 # → gh auth switch --user work-login
 ```
 
-**Shell hook example (zsh):**
-
-```zsh
-autoload -U add-zsh-hook
-add-zsh-hook chpwd() { ghmux sync 2>/dev/null }
-```
-
 ### `ghmux init`
 
 Generate per-profile gitconfig files and `includeIf` blocks in `~/.gitconfig`.
@@ -70,6 +63,30 @@ ghmux init
 ```
 
 This ensures `git commit` uses the correct author without any wrapper — matching by remote URL via `hasconfig:remote.*.url`.
+
+## Usage
+
+Run `ghmux sync` automatically on every `cd` by adding a shell hook.
+
+### zsh
+
+Add to `~/.zshrc`:
+
+```zsh
+autoload -U add-zsh-hook
+_ghmux_chpwd() { ghmux sync 2>/dev/null }
+add-zsh-hook chpwd _ghmux_chpwd
+```
+
+### fish
+
+Create `~/.config/fish/conf.d/ghmux.fish`:
+
+```fish
+function _ghmux_cd --on-variable PWD
+    ghmux sync 2>/dev/null
+end
+```
 
 ## License
 
