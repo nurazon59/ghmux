@@ -9,8 +9,8 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v5.1.0
+      - uses: actions/setup-go@v5.6.0
         with:
           go-version-file: go.mod
 
